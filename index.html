@@ -22,7 +22,7 @@
         .overlay-buttons-wrapper { margin: 24px -8px -8px; }
         .overlay-image { width: 250px; margin-bottom: 16px; }
         .scare { z-index: 1; }
-        video#video { height: 100%; width: 100%; object-fit: cover; }
+        video#video { display: none; height: 100%; width: 100%; object-fit: cover; }
         video#video::-webkit-media-controls-enclosure { display: none !important; }
     </style>
 </head>
@@ -46,7 +46,7 @@
     const video = document.getElementById("video"), overlay = document.getElementById("overlay"), overlay2 = document.getElementById("overlay2"), declineButton = document.getElementById("decline-button"), acceptButton = document.getElementById("accept-button");
     let hasClicked;
     window.onbeforeunload = () => hasClicked ? true : null;
-    function buttonClick(e) { e.preventDefault(); hasClicked = true; overlay.remove(); overlay2.remove(); video.play(); videoClick(); }
+    function buttonClick(e) { e.preventDefault(); hasClicked = true; overlay.remove(); overlay2.remove(); video.style.display = "block"; video.play(); videoClick(); }
     function videoClick(e) { e && e.preventDefault(); const d = document.documentElement; d.requestFullscreen?.() || d.mozRequestFullScreen?.() || d.webkitRequestFullscreen?.() || d.msRequestFullscreen?.(); }
     acceptButton.addEventListener("click", buttonClick);
     declineButton.addEventListener("click", buttonClick);
